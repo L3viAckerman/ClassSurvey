@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore.Scaffolding.Internal;
 
-namespace ClassSurvey1
+namespace ClassSurvey
 {
     public class MyDesignTimeService : IDesignTimeServices
     {

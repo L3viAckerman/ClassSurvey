@@ -1,5 +1,5 @@
-﻿using ClassSurvey1.Entities;
-using ClassSurvey1.Models;
+﻿using ClassSurvey.Entities;
+using ClassSurvey.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

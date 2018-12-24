@@ -1,21 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassSurvey1.Entities;
-using ClassSurvey1.Models;
+using ClassSurvey.Entities;
+using ClassSurvey.Models;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 
 namespace ClassSurvey.Modules.MVersionSurveys
 {
-    public interface IVersionSurveyService : ITransientService
-    {
-        int Count(UserEntity userEntity, VersionSurveySearchEntity VersionSurveySearchEntity);
-        List<VersionSurveyEntity> List(UserEntity userEntity, VersionSurveySearchEntity VersionSurveySearchEntity);
-        VersionSurveyEntity Get(UserEntity userEntity, Guid VersionSurveyId);
-        VersionSurveyEntity Update(UserEntity userEntity, Guid VersionSurveyId, VersionSurveyEntity VersionSurveyEntity);
-        bool Delete(UserEntity userEntity, Guid VersionSurveyId);
-        VersionSurveyEntity Create(UserEntity userEntity, VersionSurveyEntity versionSurveyEntity);
-    }
     public class VersionSurveyService : CommonService, IVersionSurveyService
     {
         public int Count(UserEntity userEntity, VersionSurveySearchEntity VersionSurveySearchEntity)

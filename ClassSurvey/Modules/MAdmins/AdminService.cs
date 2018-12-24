@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassSurvey.Modules.MAdmins;
 using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MUsers;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassSurvey.Modules.MAdmins

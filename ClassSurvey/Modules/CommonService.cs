@@ -1,5 +1,5 @@
 ﻿using ClassSurvey.Models;
-using ClassSurvey1.Models;
+using ClassSurvey.Models;
 using Microsoft.AspNetCore.Http;
 using OfficeOpenXml;
 using System;

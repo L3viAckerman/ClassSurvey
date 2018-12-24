@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ClassSurvey1.Models
+namespace ClassSurvey.Models
 {
     public partial class Admin
     {

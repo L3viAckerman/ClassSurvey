@@ -1,9 +1,9 @@
-﻿using ClassSurvey1.Models;
+﻿using ClassSurvey.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClassSurvey1.Modules;
+using ClassSurvey.Modules;
 
 namespace ClassSurvey.Entities
 {

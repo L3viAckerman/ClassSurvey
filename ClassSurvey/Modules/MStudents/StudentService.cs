@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ClassSurvey.Entities;
 using ClassSurvey.Models;
-using ClassSurvey1.Entities;
-using ClassSurvey1.Models;
+using ClassSurvey.Modules.MUsers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 

@@ -12,9 +12,9 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Linq;
-using ClassSurvey1.Models;
-using ClassSurvey1.Modules;
-namespace ClassSurvey1
+using ClassSurvey.Models;
+using ClassSurvey.Modules;
+namespace ClassSurvey
 {
     public class AuthenticationFilter : IActionFilter
     {
@@ -50,7 +50,7 @@ namespace ClassSurvey1
                     if (isGuid) temp[i] = "*";
                 }
                 Path = string.Join("/", temp);
-                ClassSurveyContext Context = new ClassSurveyContext();
+                ClassSurvey1Context Context = new ClassSurvey1Context();
                 Operation Operation = Context.Operations.Where(o => o.Link.Equals(Path) && o.Method.Equals(Method)).FirstOrDefault();
 
                 string role = string.Join(",", JWTEntity.UserEntity.Roles);

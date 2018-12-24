@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using ClassSurvey1.Entities;
-using ClassSurvey1.Modules.MClasses;
+using ClassSurvey.Entities;
+using ClassSurvey.Modules.MClasses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

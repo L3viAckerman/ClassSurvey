@@ -1,8 +1,10 @@
-﻿using ClassSurvey1.Entities;
+﻿using ClassSurvey.Entities;
+using ClassSurvey.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace ClassSurvey.Models
 {

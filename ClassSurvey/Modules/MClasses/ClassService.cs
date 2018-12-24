@@ -1,5 +1,5 @@
-﻿using ClassSurvey1.Entities;
-using ClassSurvey1.Models;
+﻿using ClassSurvey.Entities;
+using ClassSurvey.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -9,8 +9,6 @@ using System.Web;
 using System.Threading.Tasks;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 using ClassSurvey.Modules.MClasses;
-using ClassSurvey.Entities;
-using ClassSurvey.Models;
 
 namespace ClassSurvey.Modules.MClasses
 {

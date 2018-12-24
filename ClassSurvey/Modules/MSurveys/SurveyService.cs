@@ -9,11 +9,7 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
 
 namespace ClassSurvey.Modules.MSurveys
 {
-    public interface ISurveyService : ITransientService
-    {
-        void CreateOrUpdate(UserEntity userEntity, SurveyEntity SurveyEntity);
-        
-    }
+    
     public class SurveyService : CommonService, ISurveyService
     {
         public void CreateOrUpdate(UserEntity userEntity, SurveyEntity SurveyEntity)

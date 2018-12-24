@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ClassSurvey1.Models
+namespace ClassSurvey.Models
 {
     public partial class ClassSurvey1Context : DbContext
     {

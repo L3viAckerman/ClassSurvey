@@ -1,11 +1,14 @@
-﻿using System;
+﻿using ClassSurvey.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ClassSurvey.Modules.MSurveys
 {
-    public class ISurveyService
+    public interface ISurveyService : ITransientService
     {
+        void CreateOrUpdate(UserEntity userEntity, SurveyEntity SurveyEntity);
+
     }
 }

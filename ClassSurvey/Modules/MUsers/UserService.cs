@@ -6,21 +6,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using ClassSurvey1.Models;
+using ClassSurvey.Models;
+using ClassSurvey.Modules.MUsers;
 
 namespace ClassSurvey.Modules
 {
-    public interface IUserService : ITransientService, ICommonService
-    {
-        long Count(SearchUserEntity SearchUserEntity);
-        List<UserEntity> List(SearchUserEntity SearchUserEntity);
-        UserEntity Get(Guid UserId);
-        bool ChangePassword(Guid UserId, PasswordChangeEntity passwordEntity);
-        UserEntity Create(UserEntity UserEntity);
-        UserEntity Update(Guid UserId, UserEntity UserEntity);
-        bool Delete(Guid UserId);
-        string Login(UserEntity UserEntity);
-    }
+    
     public class UserService : CommonService, IUserService
     {
         private IJWTHandler JWTHandler;

@@ -1,8 +1,8 @@
 ﻿using System.Security.Claims;
-using ClassSurvey1.Modules;
+using ClassSurvey.Modules;
 
 
-namespace ClassSurvey1
+namespace ClassSurvey
 {
     public class MyPrincipal : ClaimsPrincipal
     {

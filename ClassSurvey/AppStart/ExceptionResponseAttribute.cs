@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
 
-namespace ClassSurvey1
+namespace ClassSurvey
 {
     public class ExceptionResponseAttribute : ExceptionFilterAttribute
     {

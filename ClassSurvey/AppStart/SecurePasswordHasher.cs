@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 
-namespace ClassSurvey1
+namespace ClassSurvey
 {
     public sealed class SecurePasswordHasher
     {

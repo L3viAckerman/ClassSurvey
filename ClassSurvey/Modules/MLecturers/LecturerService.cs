@@ -4,6 +4,7 @@ using System.Linq;
 using ClassSurvey.Entities;
 using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MUsers;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassSurvey.Modules.MLecturers

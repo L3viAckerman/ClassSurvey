@@ -1,3 +1,4 @@
+using ClassSurvey.Modules;
 using ClassSurvey1.Modules;
 
 namespace ClassSurvey.Models
