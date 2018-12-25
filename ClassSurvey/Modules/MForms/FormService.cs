@@ -34,7 +34,7 @@ namespace ClassSurvey.Modules.MForms
         public FormEntity Get(UserEntity userEntity, Guid FormId)
         {
             Form Form = context.Forms.FirstOrDefault(c => c.Id == FormId); ///add include later
-            if (Form == null) throw new NotFoundException("Form Not Found");
+            if (Form == null) throw new NotFoundException("Form not found!");
             return new FormEntity(Form);
         }
         public FormEntity Update(UserEntity userEntity, Guid FormId, FormEntity FormEntity)

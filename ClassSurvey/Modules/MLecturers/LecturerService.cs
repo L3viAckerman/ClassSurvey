@@ -48,7 +48,7 @@ namespace ClassSurvey.Modules.MLecturers
         {
             Lecturer Lecturer = context.Lecturers.Include(l=>l.Classes).FirstOrDefault(c => c.Id == LecturerId);
             //User User = context.Users.FirstOrDefault(u => u.Id == LecturerId);
-            if (Lecturer == null) throw new NotFoundException("Class Not Found");
+            if (Lecturer == null) throw new NotFoundException("Class not found!");
             return new LecturerEntity(Lecturer,Lecturer.Classes);
             
         }
@@ -56,7 +56,7 @@ namespace ClassSurvey.Modules.MLecturers
         public LecturerEntity Update(UserEntity userEntity, Guid LecturerId, LecturerEntity lecturerEntity)
         {
             Lecturer Lecturer = context.Lecturers.Include(c => c.Classes).FirstOrDefault(c => c.Id == LecturerId);
-            if (Lecturer == null) throw new NotFoundException("Class Not Found");
+            if (Lecturer == null) throw new NotFoundException("Class not found!");
             Lecturer updateLecturer = new Lecturer(lecturerEntity);
             updateLecturer.CopyTo(Lecturer);
             context.SaveChanges();
@@ -121,7 +121,7 @@ namespace ClassSurvey.Modules.MLecturers
                     
                     var users = context.Users.Where(u => u.Username == userEntity.Username).ToList();
                     if (users.Count > 1)
-                        throw new BadRequestException("Trung giang vien co username: " + userEntity.Username);
+                        throw new BadRequestException("Lecture was existed, username: " + userEntity.Username);
                     var user = users.FirstOrDefault();
                     user.Role = 4;
                     context.SaveChanges();
@@ -145,7 +145,7 @@ namespace ClassSurvey.Modules.MLecturers
             userEntity.Username = lecturerExcelModel.Username.Trim();
             UserService.Create(userEntity);
             var users = context.Users.Where(u => u.Username == userEntity.Username).ToList();
-            if(users.Count > 1) throw new BadRequestException("Giang vien da ton tai");
+            if(users.Count > 1) throw new BadRequestException("Lecture was existed!");
             var user = users.FirstOrDefault();
             user.Role = 4;
             context.SaveChanges();

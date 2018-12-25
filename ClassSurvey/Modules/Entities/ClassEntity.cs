@@ -28,6 +28,7 @@ namespace ClassSurvey.Entities
         public ICollection<StudentClassEntity> StudentClasses { get; set; }
         public VersionSurveyEntity VersionSurveyEntity { get; set; }
         public string Semester { get; set; }
+        public ClassEntity() : base() {}
         public ClassEntity(Models.Class @class) : base() { }
         public ClassEntity(Class Class, params object[] args) : base(Class)
         {
