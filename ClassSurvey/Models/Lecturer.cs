@@ -16,7 +16,6 @@ namespace ClassSurvey.Models
         public int? Role { get; set; }
         public string LecturerCode { get; set; }
         public string Vnumail { get; set; }
-        public string Phone { get; set; }
 
         public User IdNavigation { get; set; }
         public ICollection<Class> Classes { get; set; }

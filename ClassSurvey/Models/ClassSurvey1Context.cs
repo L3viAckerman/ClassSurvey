@@ -117,10 +117,6 @@ namespace ClassSurvey.Models
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(e => e.Phone)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
                 entity.Property(e => e.Username)
                     .IsRequired()
                     .HasMaxLength(50);

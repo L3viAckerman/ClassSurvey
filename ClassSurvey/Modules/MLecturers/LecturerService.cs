@@ -170,10 +170,10 @@ namespace ClassSurvey.Modules.MLecturers
                 lecturers = lecturers.Where(l=>l.Username.ToLower().Contains(LecturerSearchEntity.Username.ToLower()) 
                                                || LecturerSearchEntity.Username.ToLower().Contains(l.Username.ToLower()));
             }
-            if (LecturerSearchEntity.Phone != null)
-            {
-                lecturers = lecturers.Where(l=>l.Phone.Contains(LecturerSearchEntity.Phone) || LecturerSearchEntity.Phone.Contains(l.Phone));
-            }
+            //if (LecturerSearchEntity.Phone != null)
+            //{
+            //    lecturers = lecturers.Where(l=>l.Phone.Contains(LecturerSearchEntity.Phone) || LecturerSearchEntity.Phone.Contains(l.Phone));
+            //}
             if (LecturerSearchEntity.Vnumail != null)
             {
                 lecturers = lecturers.Where(l=>l.Vnumail.Equals(LecturerSearchEntity.Vnumail));
