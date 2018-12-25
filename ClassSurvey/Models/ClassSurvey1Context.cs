@@ -200,13 +200,9 @@ namespace ClassSurvey.Models
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Password).IsRequired();
 
-                entity.Property(e => e.Username)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Username).IsRequired();
             });
 
             modelBuilder.Entity<VersionSurvey>(entity =>
