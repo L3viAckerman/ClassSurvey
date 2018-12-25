@@ -42,17 +42,9 @@ namespace ClassSurvey.Models
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Name).IsRequired();
 
-                entity.Property(e => e.Phone).HasMaxLength(50);
-
-                entity.Property(e => e.Username).HasMaxLength(50);
-
-                entity.Property(e => e.Vnumail)
-                    .IsRequired()
-                    .HasMaxLength(50);
+                entity.Property(e => e.Vnumail).IsRequired();
 
                 entity.HasOne(d => d.IdNavigation)
                     .WithOne(p => p.Admin)
