@@ -21,7 +21,7 @@ namespace ClassSurvey.Models
         public string Std2 { get; set; }
         public string Std { get; set; }
         public string Std1 { get; set; }
-        public Guid VersionSurveyId { get; set; }
+        public Guid? VersionSurveyId { get; set; }
         public string Semester { get; set; }
         public DateTime? ClosedDate { get; set; }
         public DateTime? OpenedDate { get; set; }

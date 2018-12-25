@@ -145,7 +145,7 @@ namespace ClassSurvey.Modules.MLecturers
             userEntity.Username = lecturerExcelModel.Username.Trim();
             UserService.Create(userEntity);
             var users = context.Users.Where(u => u.Username == userEntity.Username).ToList();
-            if(users.Count > 1) throw new BadRequestException("Trung giang vien");
+            if(users.Count > 1) throw new BadRequestException("Giang vien da ton tai");
             var user = users.FirstOrDefault();
             user.Role = 4;
             context.SaveChanges();

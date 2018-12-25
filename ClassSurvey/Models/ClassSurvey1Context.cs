@@ -86,7 +86,6 @@ namespace ClassSurvey.Models
                 entity.HasOne(d => d.VersionSurvey)
                     .WithMany(p => p.Classes)
                     .HasForeignKey(d => d.VersionSurveyId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Classes_VersionSurvey");
             });
 
