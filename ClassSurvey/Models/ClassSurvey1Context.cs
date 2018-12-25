@@ -61,8 +61,6 @@ namespace ClassSurvey.Models
 
                 entity.Property(e => e.ClosedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.M).HasMaxLength(10);
-
                 entity.Property(e => e.OpenedDate).HasColumnType("datetime");
 
                 entity.Property(e => e.Semester).IsUnicode(false);
