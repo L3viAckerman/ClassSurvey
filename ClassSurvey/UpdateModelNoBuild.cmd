@@ -1,11 +1,1 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ClassSurvey
-{
-    public class UpdateModelNoBuild
-    {
-    }
-}
+﻿dotnet ef dbcontext scaffold  "data source=den1.mssql7.gear.host;initial catalog=ClassSurvey1;persist security info=True;user id=classsurvey1;password=Ru70jAM_J!5M;multipleactiveresultsets=True;" Microsoft.EntityFrameworkCore.SqlServer  -o Models -f --no-build 
