@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using ClassSurvey.Entities;
 using ClassSurvey.Modules;
 using ClassSurvey.Modules.MAdmins;
+using ClassSurvey.Modules.MAdmins.Entity;
 using ClassSurvey.Modules.MClasses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ClassSurvey1.Modules.MAdmins
+namespace ClassSurvey.Modules.MAdmins
 {
     [Route("api/Admins")]
     public class AdminController : CommonController

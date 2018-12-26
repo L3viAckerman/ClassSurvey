@@ -1,5 +1,5 @@
 using ClassSurvey.Modules;
-using ClassSurvey1.Modules;
+using ClassSurvey.Modules.MUsers.Entity;
 
 namespace ClassSurvey.Models
 {

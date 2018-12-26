@@ -1,4 +1,5 @@
-﻿using ClassSurvey.Entities;
+﻿using ClassSurvey.Modules.MSurveys.Entity;
+using ClassSurvey.Modules.MUsers.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,5 @@ namespace ClassSurvey.Modules.MSurveys
     public interface ISurveyService : ITransientService
     {
         void CreateOrUpdate(UserEntity userEntity, SurveyEntity SurveyEntity);
-
     }
 }

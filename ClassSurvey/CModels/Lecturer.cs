@@ -1,4 +1,4 @@
-﻿using ClassSurvey.Entities;
+﻿using ClassSurvey.Modules.MLecturers.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

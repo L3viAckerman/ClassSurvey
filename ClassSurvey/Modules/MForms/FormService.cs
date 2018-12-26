@@ -1,12 +1,11 @@
-﻿using ClassSurvey.Entities;
-using ClassSurvey.Models;
+﻿using ClassSurvey.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ClassSurvey.Entities;
-using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MUsers.Entity;
+using ClassSurvey.Modules.MForms.Entity;
 
 namespace ClassSurvey.Modules.MForms
 {
@@ -42,13 +41,13 @@ namespace ClassSurvey.Modules.MForms
             if (FormValidator(FormEntity))
             {
                 Form Form = context.Forms.FirstOrDefault(c => c.Id == FormId); //add include later
-                if (Form == null) throw new NotFoundException("Form Not Found");
+                if (Form == null) throw new NotFoundException("Form not found!");
                 Form updateForm = new Form(FormEntity);
                 updateForm.CopyTo(Form);
                 context.SaveChanges();
                 return new FormEntity(Form);
             }
-            throw new BadRequestException("Cannot update");
+            throw new BadRequestException("Cannot update!");
             
         }
 
@@ -62,7 +61,7 @@ namespace ClassSurvey.Modules.MForms
                 context.SaveChanges();
                 return new FormEntity(Form);
             }
-            throw new BadRequestException("Cannot Create");
+            throw new BadRequestException("Cannot create!");
 
           
         }

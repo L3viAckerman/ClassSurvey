@@ -1,11 +1,12 @@
-﻿using ClassSurvey.Entities;
-using ClassSurvey.Models;
+﻿using ClassSurvey.Models;
 using ClassSurvey.Modules.MClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
+using ClassSurvey.Modules.MUsers.Entity;
+using ClassSurvey.Modules.MSurveys.Entity;
 
 namespace ClassSurvey.Modules.MSurveys
 {

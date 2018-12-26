@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using ClassSurvey.Modules;
-
+using ClassSurvey.Modules.MUsers.Entity;
 
 namespace ClassSurvey
 {

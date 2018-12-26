@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassSurvey.Entities;
-using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MLecturers.Entity;
 using ClassSurvey.Modules.MUsers;
+using ClassSurvey.Modules.MUsers.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassSurvey.Modules.MLecturers

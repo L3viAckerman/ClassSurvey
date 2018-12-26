@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MClasses.Entity;
+using ClassSurvey.Modules.MStudents.Entity;
 using ClassSurvey.Modules.MUsers;
+using ClassSurvey.Modules.MUsers.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 

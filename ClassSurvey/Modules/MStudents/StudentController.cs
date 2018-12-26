@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using ClassSurvey.Entities;
+using ClassSurvey.Modules.MClasses.Entity;
+using ClassSurvey.Modules.MStudents.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using StudentExcelModel = ClassSurvey.Entities.StudentExcelModel;
+using StudentExcelModel = ClassSurvey.Modules.MStudents.Entity.StudentExcelModel;
 
 namespace ClassSurvey.Modules.MStudents
 {

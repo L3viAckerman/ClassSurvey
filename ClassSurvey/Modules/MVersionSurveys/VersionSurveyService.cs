@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MUsers.Entity;
+using ClassSurvey.Modules.MVersionSurveys.Entity;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 
 namespace ClassSurvey.Modules.MVersionSurveys
@@ -29,7 +30,7 @@ namespace ClassSurvey.Modules.MVersionSurveys
         public VersionSurveyEntity Get(UserEntity userEntity, Guid VersionSurveyId)
         {
             VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); ///add include later
-            if (VersionSurvey == null) throw new NotFoundException("VersionSurvey Not Found");
+            if (VersionSurvey == null) throw new NotFoundException("VersionSurvey not found!");
             return new VersionSurveyEntity(VersionSurvey);
         }
         public VersionSurveyEntity Update(UserEntity userEntity, Guid VersionSurveyId, VersionSurveyEntity VersionSurveyEntity)
@@ -37,9 +38,9 @@ namespace ClassSurvey.Modules.MVersionSurveys
             if(VersionSurveyEntity.Content.Equals(String.Empty) 
                || VersionSurveyEntity.Content == null
                || VersionSurveyEntity.Version == null)
-                throw new BadRequestException("Field khong duoc trong");
+                throw new BadRequestException("Field must not empty!");
             VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); //add include later
-            if (VersionSurvey == null) throw new NotFoundException("VersionSurvey Not Found");
+            if (VersionSurvey == null) throw new NotFoundException("VersionSurvey not found!");
             VersionSurvey updateVersionSurvey = new VersionSurvey(VersionSurveyEntity);
             DateTime? createdDate = VersionSurvey.CreatedDate;
             updateVersionSurvey.CopyTo(VersionSurvey);
@@ -54,7 +55,7 @@ namespace ClassSurvey.Modules.MVersionSurveys
             if(versionSurveyEntity.Content.Equals(String.Empty) 
                || versionSurveyEntity.Content == null 
                || versionSurveyEntity.Version == null)
-                throw new BadRequestException("Field khong duoc trong");
+                throw new BadRequestException("Field must not empty!");
             VersionSurvey versionSurvey = new VersionSurvey(versionSurveyEntity);
             versionSurvey.Id = Guid.NewGuid();
             versionSurvey.CreatedDate = DateTime.Now;

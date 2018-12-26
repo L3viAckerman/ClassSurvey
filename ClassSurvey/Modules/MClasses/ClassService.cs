@@ -1,5 +1,4 @@
-﻿using ClassSurvey.Entities;
-using ClassSurvey.Models;
+﻿using ClassSurvey.Models;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
@@ -8,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
+using ClassSurvey.Modules.MUsers.Entity;
+using ClassSurvey.Modules.MClasses.Entity;
 
 namespace ClassSurvey.Modules.MClasses
 {
@@ -32,7 +33,7 @@ namespace ClassSurvey.Modules.MClasses
             List<StudentClass> studentClasses = context.StudentClasses.Include(sc => sc.Forms)
                 .Where(sc => sc.ClassId == ClassId).ToList();
             var Class = context.Classes.FirstOrDefault(c => c.Id == ClassId);
-            if (Class == null) throw new BadRequestException("Class not found");
+            if (Class == null) throw new BadRequestException("Class not found!");
             foreach (var studentClass in studentClasses)
             {
                 if (studentClass.Forms != null && studentClass.Forms.Count > 0)
@@ -61,7 +62,7 @@ namespace ClassSurvey.Modules.MClasses
         public ClassEntity Get(UserEntity userEntity, Guid ClassId)
         {
             Class Class = context.Classes.Include(c => c.Lecturer).Include(c => c.StudentClasses).ThenInclude(sc => sc.Student).Include(s => s.VersionSurvey).FirstOrDefault(c => c.Id == ClassId);
-            if (Class == null) throw new NotFoundException("Class Not Found");
+            if (Class == null) throw new NotFoundException("Class not found!");
             List<Class> classes = context.Classes.Where(c => c.Semester == Class.Semester).ToList();
             if (//Class.OpenedDate != null && Class.ClosedDate != null && 
                 //DateTime.Now > Class.OpenedDate  && DateTime.Now > Class.ClosedDate &&
@@ -81,7 +82,7 @@ namespace ClassSurvey.Modules.MClasses
         public ClassEntity Update(UserEntity userEntity, Guid ClassId, ClassEntity classEntity)
         {
             Class Class = context.Classes.Include(c => c.StudentClasses).Include(s => s.VersionSurvey).FirstOrDefault(c => c.Id == ClassId);
-            if (Class == null) throw new NotFoundException("Class Not Found");
+            if (Class == null) throw new NotFoundException("Class not found!");
             Class updateClass = new Class(classEntity);
             updateClass.CopyTo(Class);
             context.SaveChanges();
@@ -165,7 +166,7 @@ namespace ClassSurvey.Modules.MClasses
                     List<StudentExcelModel> studentModelEntities =
                         ConvertToIEnumrable<StudentExcelModel>(data).ToList();
                     string lecturerCode = GetPropValueFromExcel(data, "Mã cán bộ:").Trim();
-                    if (lecturerCode == "") throw new BadRequestException("Cannot Get Ma can bo");
+                    if (lecturerCode == "") throw new BadRequestException("Cannot get lectureCode!");
                     //newClass.LectureId = new Guid(Id);
                     var lecturer = context.Lecturers.FirstOrDefault(l => l.LecturerCode.Trim() == lecturerCode);
                     newClass.LecturerId = lecturer.Id;
@@ -180,7 +181,7 @@ namespace ClassSurvey.Modules.MClasses
                     {
                         var student = Students.FirstOrDefault(s =>
                             s.Code.ToString().Trim().Equals(studentModel.Code.Trim()));
-                        if (student == null) throw new BadRequestException("Student not existed");
+                        if (student == null) throw new BadRequestException("Student not existed!");
                         var StudentClass = new StudentClass();
                         Console.WriteLine(studentModel.Code);
                         StudentClass.Id = Guid.NewGuid();

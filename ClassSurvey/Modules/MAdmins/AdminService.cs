@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using ClassSurvey.Entities;
 using ClassSurvey.Models;
+using ClassSurvey.Modules.MAdmins.Entity;
 using ClassSurvey.Modules.MUsers;
+using ClassSurvey.Modules.MUsers.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace ClassSurvey.Modules.MAdmins
@@ -48,14 +49,14 @@ namespace ClassSurvey.Modules.MAdmins
         {
             Admin Admin = context.Admins.FirstOrDefault(c => c.Id == AdminId); ///add include later
             //User User = context.Users.FirstOrDefault(u => u.Id == AdminId);                                                           
-            if (Admin == null) throw new NotFoundException("Admin Not Found");
+            if (Admin == null) throw new NotFoundException("Admin not found!");
             return new AdminEntity(Admin);
         }
 
         public AdminEntity Update(UserEntity userEntity, Guid AdminId, AdminEntity AdminEntity)
         {
             Admin Admin = context.Admins.FirstOrDefault(c => c.Id == AdminId); //add include later
-            if (Admin == null) throw new NotFoundException("Admin Not Found");
+            if (Admin == null) throw new NotFoundException("Admin not found!");
             Admin updateAdmin = new Admin(AdminEntity);
             updateAdmin.CopyTo(Admin);
             context.SaveChanges();
@@ -69,7 +70,7 @@ namespace ClassSurvey.Modules.MAdmins
             newUserEntity.Username = AdminDto.Username.Trim();
             UserService.Create(newUserEntity);
             var users = context.Users.Where(u => u.Username == newUserEntity.Username).ToList();
-            if(users.Count > 1) throw new BadRequestException("Admin bi trung username " + AdminDto.Username);
+            if(users.Count > 1) throw new BadRequestException("Admin's name is duplicate:" + AdminDto.Username);
             var user = users.FirstOrDefault();
             user.Role = 2;
             context.SaveChanges();

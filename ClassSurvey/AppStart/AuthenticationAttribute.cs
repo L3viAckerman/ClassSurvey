@@ -14,6 +14,8 @@ using Newtonsoft.Json;
 using System.Linq;
 using ClassSurvey.Models;
 using ClassSurvey.Modules;
+using ClassSurvey.Modules.MUsers.Entity;
+
 namespace ClassSurvey
 {
     public class AuthenticationFilter : IActionFilter

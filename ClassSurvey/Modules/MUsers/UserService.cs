@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassSurvey.Models;
 using ClassSurvey.Modules.MUsers;
+using ClassSurvey.Modules.MUsers.Entity;
 
 namespace ClassSurvey.Modules
 {
@@ -50,16 +51,16 @@ namespace ClassSurvey.Modules
                 .Include(u => u.Lecturer)
                 .Where(u => u.Id == UserId).FirstOrDefault();
             if (User == null)
-                throw new BadRequestException("User không tồn tại");
+                throw new BadRequestException("User not exist!");
             return new UserEntity(User);
         }
 
         public UserEntity Create(UserEntity UserEntity)
         {
             if (string.IsNullOrEmpty(UserEntity.Username))
-                throw new BadRequestException("Bạn chưa điền Username");
+                throw new BadRequestException("You didn't fill Username!");
             if (string.IsNullOrEmpty(UserEntity.Password))
-                throw new BadRequestException("Bạn chưa điền Password");
+                throw new BadRequestException("You didn't fill Password!");
             User User = context.Users.Where(u => u.Username.ToLower().Equals(UserEntity.Username.ToLower())).FirstOrDefault();
             if (User == null)
             {
@@ -94,7 +95,7 @@ namespace ClassSurvey.Modules
         {
             User User = context.Users.FirstOrDefault(u => u.Id.Equals(UserEntity.Id));
             if (User == null)
-                throw new BadRequestException("User không tồn tại.");
+                throw new BadRequestException("User not exist!");
             User.Username = UserEntity.Username.Trim(); 
             User.Password = SecurePasswordHasher.Hash(UserEntity.Password);
             context.SaveChanges();
@@ -104,7 +105,7 @@ namespace ClassSurvey.Modules
         {
             User User = context.Users.Where(u => u.Id == UserId).FirstOrDefault();
             if (User == null)
-                throw new BadRequestException("User không tồn tại.");
+                throw new BadRequestException("User not exist!");
             context.Users.Remove(User);
             context.SaveChanges();
             return true;
@@ -113,9 +114,9 @@ namespace ClassSurvey.Modules
         public string Login(UserEntity UserEntity)
         {
             if (string.IsNullOrEmpty(UserEntity.Username))
-                throw new BadRequestException("Bạn chưa điền Username");
+                throw new BadRequestException("You didn't fill Username!");
             if (string.IsNullOrEmpty(UserEntity.Password))
-                throw new BadRequestException("Bạn chưa điền Password");
+                throw new BadRequestException("You didn't fill Password!");
 
             User User = context.Users
                .Include(u => u.Admin)
@@ -124,11 +125,11 @@ namespace ClassSurvey.Modules
                .Where(u => u.Username.ToLower().Equals(UserEntity.Username.ToLower())).FirstOrDefault();
 
             if (User == null)
-                throw new BadRequestException("User không tồn tại.");
+                throw new BadRequestException("User not exist!");
             //string hashed1234 = SecurePasswordHasher.Hash("1234"); //hashed password 
             string hashPassword = (User.Password);
             if (!SecurePasswordHasher.Verify(UserEntity.Password, hashPassword))
-                throw new BadRequestException("Bạn nhập sai password.");
+                throw new BadRequestException("Wrong password!");
             UserEntity = new UserEntity(User);
             //UserEntity.Roles = new List<string>() { "1", "4" };
             return JWTHandler.CreateToken(UserEntity);

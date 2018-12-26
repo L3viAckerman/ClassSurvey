@@ -1,4 +1,4 @@
-﻿using ClassSurvey.Entities;
+﻿using ClassSurvey.Modules.MSurveys.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

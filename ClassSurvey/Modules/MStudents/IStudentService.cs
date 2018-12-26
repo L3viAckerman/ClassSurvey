@@ -1,4 +1,6 @@
-﻿using ClassSurvey.Entities;
+﻿using ClassSurvey.Modules.MClasses.Entity;
+using ClassSurvey.Modules.MStudents.Entity;
+using ClassSurvey.Modules.MUsers.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
