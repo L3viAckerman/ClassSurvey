@@ -50,7 +50,7 @@ namespace ClassSurvey.Modules.MStudents
         public List<ClassEntity> GetClasses(Guid StudentId)
         {
             List<StudentClass> studentClasses = context.StudentClasses.Where(sc=>sc.StudentId == StudentId).ToList();
-            if(studentClasses == null) throw new NotFoundException("Class Not Found");
+            if(studentClasses == null) throw new NotFoundException("Class not found!");
             List<ClassEntity> result = new List<ClassEntity>();
             foreach (var sc in studentClasses)
             {
@@ -66,14 +66,14 @@ namespace ClassSurvey.Modules.MStudents
         {
             Student Student = context.Students.Include(s=>s.StudentClasses).ThenInclude(sc=>sc.Forms).FirstOrDefault(c => c.Id == StudentId); ///add include later
             //User User = context.Users.FirstOrDefault(u => u.Id == StudentId);
-            if (Student == null) throw new NotFoundException("Student Not Found");
+            if (Student == null) throw new NotFoundException("Student not found!");
             return new StudentEntity(Student,Student.StudentClasses);
         }
 
         public StudentEntity Update(UserEntity userEntity, Guid StudentId, StudentEntity StudentEntity)
         {
             Student Student = context.Students.Include(s=>s.StudentClasses).FirstOrDefault(c => c.Id == StudentId); //add include later
-            if (Student == null) throw new NotFoundException("Student Not Found");
+            if (Student == null) throw new NotFoundException("Student not found!");
             Student updateStudent = new Student(StudentEntity);
             updateStudent.CopyTo(Student);
             context.SaveChanges();
@@ -156,12 +156,12 @@ namespace ClassSurvey.Modules.MStudents
                 {
                     //Create user 
                     var userEntity = new UserEntity();
-                    userEntity.Password = StudentExcelModel.Password;
+                    userEntity.Password = StudentExcelModel.Password.Trim();
                     userEntity.Username = StudentExcelModel.UserName.Trim();
                     UserService.Create(userEntity);
                     context.SaveChanges();
                     var users = context.Users.Where(u => u.Username == userEntity.Username).ToList();
-                    if(users.Count > 1) throw new BadRequestException("Trung sinh vien co MSSV la " + userEntity.Username);
+                    if(users.Count > 1) throw new BadRequestException("Duplicate with student, StudentCode is " + userEntity.Username);
                     var user = users.First();
                     user.Role = 8;
                     context.SaveChanges();
@@ -187,7 +187,7 @@ namespace ClassSurvey.Modules.MStudents
             userEntity.Username = StudentExcelModel.UserName.Trim();
             UserService.Create(userEntity);
             var users = context.Users.Where(u => u.Username == userEntity.Username).ToList();
-            if(users.Count > 1) throw new BadRequestException("Trung sinh vien");
+            if(users.Count > 1) throw new BadRequestException("Duplicate Student!");
             var user = users.FirstOrDefault();
             user.Role = 8;
             context.SaveChanges();

@@ -41,10 +41,10 @@ namespace ClassSurvey
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             var sp = services.BuildServiceProvider();
             var JWTHandler = sp.GetRequiredService<IJWTHandler>();
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
+            //services.AddSpaStaticFiles(configuration =>
+            //{
+            //    configuration.RootPath = "ClientApp/build";
+            //});
             services.AddMvc(options =>
             {
                 options.Filters.Add(new ExceptionResponseAttribute()); // an instance
@@ -88,7 +88,7 @@ namespace ClassSurvey
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
+            //app.UseSpaStaticFiles();
             app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
@@ -97,15 +97,15 @@ namespace ClassSurvey
                     template: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
+            //    }
+            //});
             var IisUrlRewriteStreamReader = File.OpenText("IISUrlRewrite.xml");
             var Options = new RewriteOptions()
                 .AddIISUrlRewrite(IisUrlRewriteStreamReader);

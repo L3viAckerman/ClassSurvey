@@ -39,10 +39,7 @@ namespace ClassSurvey.Modules
             context = new ClassSurvey1Context();
         }
 
-        //public CommonService(IUnitOfWork UnitOfWork)
-        //{
-        //    this.UnitOfWork = UnitOfWork;
-        //}
+       
         public IEnumerable<T> ConvertToIEnumrable<T>(byte[] data) where T : new()
         {
             using (MemoryStream ms = new MemoryStream(data))

@@ -115,7 +115,7 @@ namespace ClassSurvey.Modules.MLecturers
                 foreach (var lecturerExcelModel in LecturerExcelModels.Where(lem => lem.Name != null))
                 {
                     var userEntity = new UserEntity();
-                    userEntity.Password = lecturerExcelModel.Password;
+                    userEntity.Password = lecturerExcelModel.Password.Trim();
                     userEntity.Username = lecturerExcelModel.Username.Trim();
                     UserService.Create(userEntity);
                     
@@ -170,10 +170,6 @@ namespace ClassSurvey.Modules.MLecturers
                 lecturers = lecturers.Where(l=>l.Username.ToLower().Contains(LecturerSearchEntity.Username.ToLower()) 
                                                || LecturerSearchEntity.Username.ToLower().Contains(l.Username.ToLower()));
             }
-            //if (LecturerSearchEntity.Phone != null)
-            //{
-            //    lecturers = lecturers.Where(l=>l.Phone.Contains(LecturerSearchEntity.Phone) || LecturerSearchEntity.Phone.Contains(l.Phone));
-            //}
             if (LecturerSearchEntity.Vnumail != null)
             {
                 lecturers = lecturers.Where(l=>l.Vnumail.Equals(LecturerSearchEntity.Vnumail));

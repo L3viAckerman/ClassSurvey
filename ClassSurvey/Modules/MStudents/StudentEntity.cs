@@ -70,11 +70,11 @@ namespace ClassSurvey.Modules.MStudents.Entity
                 StudentEntity.Id = Guid.NewGuid();
             }
 
-            StudentEntity.Username = this.UserName;
-            StudentEntity.Name = this.Name;
-            StudentEntity.Vnumail = this.Vnumail;
-            StudentEntity.Code = this.UserName;
-            StudentEntity.Class = this.Class;
+            StudentEntity.Username = this.UserName.Trim();
+            StudentEntity.Name = this.Name.Trim();
+            StudentEntity.Vnumail = this.Vnumail.Trim();
+            StudentEntity.Code = this.UserName.Trim();
+            StudentEntity.Class = this.Class.Trim();
             return StudentEntity;
         }
     }
