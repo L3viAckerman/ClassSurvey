@@ -37,7 +37,7 @@ namespace ClassSurvey.Modules.MVersionSurveys
         {
             if(VersionSurveyEntity.Content.Equals(String.Empty) 
                || VersionSurveyEntity.Content == null
-               || VersionSurveyEntity.Version == -1)
+               || VersionSurveyEntity.Version.ToString() == null)
                 throw new BadRequestException("Field must not empty!");
             VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); //add include later
             if (VersionSurvey == null) throw new NotFoundException("VersionSurvey not found!");
@@ -54,7 +54,7 @@ namespace ClassSurvey.Modules.MVersionSurveys
         {
             if(versionSurveyEntity.Content.Equals(String.Empty) 
                || versionSurveyEntity.Content == null 
-               || versionSurveyEntity.Version == -1)
+               || versionSurveyEntity.Version.ToString() == null)
                 throw new BadRequestException("Field must not empty!");
             VersionSurvey versionSurvey = new VersionSurvey(versionSurveyEntity);
             versionSurvey.Id = Guid.NewGuid();
