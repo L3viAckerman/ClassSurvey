@@ -33,16 +33,16 @@ namespace ClassSurvey
         //uy quyen
         public void OnActionExecuting(ActionExecutingContext FilterContext)
         {
-            return;
-            if (FilterContext.HttpContext.Request.Path.Value.StartsWith("/App/Login"))
+            if (FilterContext.HttpContext.Request.Path.Value.StartsWith("/api/Users/Login"))
                 return;
             var Token = FilterContext.HttpContext.Request.Cookies["JWT"];
             var JWTEntity = JWTHandler.Decode(Token);
             if (JWTEntity != null)
             {
-
                 FilterContext.HttpContext.User = new MyPrincipal(JWTEntity.UserEntity);
-                string Path = FilterContext.HttpContext.Request.Path.HasValue ? FilterContext.HttpContext.Request.Path.Value : "";
+                string Path = FilterContext.HttpContext.Request.Path.HasValue
+                    ? FilterContext.HttpContext.Request.Path.Value
+                    : "";
                 string Method = FilterContext.HttpContext.Request.Method;
                 string[] temp = Path.Split('/');
                 for (int i = 0; i < temp.Length; i++)
@@ -51,27 +51,30 @@ namespace ClassSurvey
                     bool isGuid = Guid.TryParse(temp[i], out id);
                     if (isGuid) temp[i] = "*";
                 }
+
                 Path = string.Join("/", temp);
                 ClassSurvey1Context Context = new ClassSurvey1Context();
-                Operation Operation = Context.Operations.Where(o => o.Link.Equals(Path) && o.Method.Equals(Method)).FirstOrDefault();
-
+                Console.WriteLine("Filter " + Path + " " + Method);
+                Operation Operation = Context.Operations
+                    .FirstOrDefault(o => o.Link.Equals(Path) && o.Method.Equals(Method));
+                if (Operation == null) return;
+                Console.WriteLine(Operation.Link);
                 string role = string.Join(",", JWTEntity.UserEntity.Roles);
                 ROLES roles = (ROLES)Enum.Parse(typeof(ROLES), role);
+                Console.WriteLine(roles);
                 var operationRole = (ROLES)Enum.Parse(typeof(ROLES), Operation.Role.ToString());
                 if (Operation != null && operationRole != ROLES.NONE)
                 {
                     if ((operationRole & roles) == 0)
                         throw new ForbiddenException("Bạn không có quyền truy cập");
                 }
+
                 return;
             }
-            else
-            {
-                if (FilterContext.HttpContext.Request.Path.Value.StartsWith("api"))
-                    throw new ForbiddenException("Cookie không hợp lệ");
-                throw new ForbiddenException("Login First");
-                
-            }
+
+            if (FilterContext.HttpContext.Request.Path.Value.StartsWith("api"))
+                throw new ForbiddenException("Cookie không hợp lệ");
+            throw new ForbiddenException("Login First");
         }
 
         public void OnActionExecuted(ActionExecutedContext Context)

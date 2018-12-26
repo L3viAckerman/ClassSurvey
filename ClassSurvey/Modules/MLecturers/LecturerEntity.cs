@@ -58,10 +58,10 @@ namespace ClassSurvey.Modules.MLecturers.Entity
 
             }
 
-            lecturerEntity.Username = this.Username;
-            lecturerEntity.Name = this.Name;
-            lecturerEntity.Vnumail = this.Vnumail;
-            lecturerEntity.LecturerCode = this.LecturerCode;
+            lecturerEntity.Username = this.Username.Trim();
+            lecturerEntity.Name = this.Name.Trim();
+            lecturerEntity.Vnumail = this.Vnumail.Trim();
+            lecturerEntity.LecturerCode = this.LecturerCode.Trim();
             return lecturerEntity;
         }
     }
