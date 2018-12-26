@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using ClassSurvey.Modules;
 using ClassSurvey.Modules.MAdmins;
 using ClassSurvey.Modules.MAdmins.Entity;
 using ClassSurvey.Modules.MClasses;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClassSurvey.Modules.MAdmins

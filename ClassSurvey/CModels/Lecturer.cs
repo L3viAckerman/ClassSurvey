@@ -1,8 +1,6 @@
 ﻿using ClassSurvey.Modules.MLecturers.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ClassSurvey.Models
 {
@@ -32,6 +30,10 @@ namespace ClassSurvey.Models
             }
 
             return false;
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         public override bool Equals(Object other)
         {

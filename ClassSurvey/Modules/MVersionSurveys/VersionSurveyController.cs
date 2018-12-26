@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using ClassSurvey.Modules.MClasses;
 using ClassSurvey.Modules.MVersionSurveys.Entity;
 using Microsoft.AspNetCore.Http;

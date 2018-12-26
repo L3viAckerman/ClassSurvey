@@ -1,9 +1,7 @@
 ﻿using ClassSurvey.Models;
 using ClassSurvey.Modules.MAdmins.Entity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace ClassSurvey.Models
 {
@@ -13,6 +11,10 @@ namespace ClassSurvey.Models
         public Admin(AdminEntity adminEntity) : base(adminEntity)
         {
 
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         public override bool Equals(Base other)
         {

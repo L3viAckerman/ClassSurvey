@@ -10,6 +10,10 @@ namespace ClassSurvey.Models
         {
             
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public override bool Equals(Base other)
         {
             if (other == null) return false;

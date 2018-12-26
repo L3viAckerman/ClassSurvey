@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
 using ClassSurvey.Modules.MClasses;
 using ClassSurvey.Modules.MForms.Entity;
 using ClassSurvey.Modules.MSurveys;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClassSurvey.Modules.MForms

@@ -1,8 +1,6 @@
 ﻿using ClassSurvey.Modules.MStudents.Entity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ClassSurvey.Models
 {
@@ -20,6 +18,10 @@ namespace ClassSurvey.Models
                     this.StudentClasses.Add(new StudentClass(studentClassEntity));
                 }
             }
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         public override bool Equals(Base other)
         {
