@@ -67,6 +67,8 @@ namespace ClassSurvey.Modules.MVersionSurveys
         {
             var CurrentVersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId);
             if (CurrentVersionSurvey == null) return false;
+            var Class = context.Classes.FirstOrDefault(c => c.VersionSurveyId == CurrentVersionSurvey.Id);
+            if (Class != null) throw new BadRequestException("Can not remove");
             context.VersionSurveys.Remove(CurrentVersionSurvey);
             context.SaveChanges();
             return true;
