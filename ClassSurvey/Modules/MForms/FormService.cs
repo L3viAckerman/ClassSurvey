@@ -30,7 +30,7 @@ namespace ClassSurvey.Modules.MForms
 
         public FormEntity Get(UserEntity userEntity, Guid FormId)
         {
-            Form Form = context.Forms.FirstOrDefault(c => c.Id == FormId); ///add include later
+            Form Form = context.Forms.FirstOrDefault(c => c.Id == FormId);
             if (Form == null) throw new NotFoundException("Form not found!");
             return new FormEntity(Form);
         }
@@ -38,7 +38,7 @@ namespace ClassSurvey.Modules.MForms
         {
             if (FormValidator(FormEntity))
             {
-                Form Form = context.Forms.FirstOrDefault(c => c.Id == FormId); //add include later
+                Form Form = context.Forms.FirstOrDefault(c => c.Id == FormId); 
                 if (Form == null) throw new NotFoundException("Form not found!");
                 Form updateForm = new Form(FormEntity);
                 updateForm.CopyTo(Form);

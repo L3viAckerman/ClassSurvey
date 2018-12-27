@@ -35,15 +35,15 @@ namespace ClassSurvey.Modules.MStudents
             if (StudentSearchEntity == null) StudentSearchEntity = new StudentSearchEntity();
             IQueryable<Student> Students = context.Students.Include(s=>s.StudentClasses);
             Students = Apply(Students, StudentSearchEntity);
-//            List<User> Users = new List<User>();
-//            foreach (var Student in Students)
-//            {
-//                var User = context.Users.FirstOrDefault(u => u.Id == Student.Id);
-//                Users.Add(User);
-//            }
-//            
-//            return Students.Join(Users, u => u.Id, s => s.Id, (student, user) => new StudentEntity(student, student.StudentClasses, user)).ToList();
-            //Students = StudentSearchEntity.SkipAndTake(Students);
+////            List<User> Users = new List<User>();
+////            foreach (var Student in Students)
+////            {
+////                var User = context.Users.FirstOrDefault(u => u.Id == Student.Id);
+////                Users.Add(User);
+////            }
+////            
+////            return Students.Join(Users, u => u.Id, s => s.Id, (student, user) => new StudentEntity(student, student.StudentClasses, user)).ToList();
+//            //Students = StudentSearchEntity.SkipAndTake(Students);
             return Students.Select(s => new StudentEntity(s, s.StudentClasses)).ToList();
 
         }
@@ -64,7 +64,7 @@ namespace ClassSurvey.Modules.MStudents
         
         public StudentEntity Get(UserEntity userEntity, Guid StudentId)
         {
-            Student Student = context.Students.Include(s=>s.StudentClasses).ThenInclude(sc=>sc.Forms).FirstOrDefault(c => c.Id == StudentId); ///add include later
+            Student Student = context.Students.Include(s=>s.StudentClasses).ThenInclude(sc=>sc.Forms).FirstOrDefault(c => c.Id == StudentId); 
             //User User = context.Users.FirstOrDefault(u => u.Id == StudentId);
             if (Student == null) throw new NotFoundException("Student not found!");
             return new StudentEntity(Student,Student.StudentClasses);
@@ -72,7 +72,7 @@ namespace ClassSurvey.Modules.MStudents
 
         public StudentEntity Update(UserEntity userEntity, Guid StudentId, StudentEntity StudentEntity)
         {
-            Student Student = context.Students.Include(s=>s.StudentClasses).FirstOrDefault(c => c.Id == StudentId); //add include later
+            Student Student = context.Students.Include(s=>s.StudentClasses).FirstOrDefault(c => c.Id == StudentId); 
             if (Student == null) throw new NotFoundException("Student not found!");
             Student updateStudent = new Student(StudentEntity);
             updateStudent.CopyTo(Student);
@@ -154,7 +154,6 @@ namespace ClassSurvey.Modules.MStudents
 
                 foreach (var StudentExcelModel in StudentExcelModels.Where(sem => sem.Name != null))
                 {
-                    //Create user 
                     var userEntity = new UserEntity();
                     userEntity.Password = StudentExcelModel.Password.Trim();
                     userEntity.Username = StudentExcelModel.UserName.Trim();
@@ -165,7 +164,6 @@ namespace ClassSurvey.Modules.MStudents
                     var user = users.First();
                     user.Role = 8;
                     context.SaveChanges();
-                    //Create Entity 
                     var newStudentEntity = new StudentEntity();
                     newStudentEntity = StudentExcelModel.ToEntity(newStudentEntity);
                     newStudentEntity.Id = user.Id;
@@ -191,7 +189,6 @@ namespace ClassSurvey.Modules.MStudents
             var user = users.FirstOrDefault();
             user.Role = 8;
             context.SaveChanges();
-            //Create User 
             var newStudentEntity = new StudentEntity();
             newStudentEntity = StudentExcelModel.ToEntity(newStudentEntity);
             newStudentEntity.Id = user.Id;

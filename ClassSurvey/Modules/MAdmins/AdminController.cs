@@ -16,19 +16,9 @@ namespace ClassSurvey.Modules.MAdmins
         public AdminController(IAdminService AdminService)
         {
             this.AdminService = AdminService;
-        }
+        }       
         
         
-        [HttpGet("Count")]
-        public int Count([FromBody]AdminSearchEntity AdminSearchEntity)
-        {
-            return AdminService.Count(UserEntity, AdminSearchEntity);
-        }
-        [HttpGet("List")]
-        public List<AdminEntity> List([FromBody]AdminSearchEntity AdminSearchEntity)
-        {
-            return AdminService.List(UserEntity, AdminSearchEntity);
-        }
         [HttpPut("{AdminId}")]
         public AdminEntity Update([FromBody] AdminEntity AdminEntity, [FromRoute]Guid AdminId)
         {
@@ -38,6 +28,16 @@ namespace ClassSurvey.Modules.MAdmins
         public AdminEntity Get([FromRoute]Guid AdminId)
         {
             return AdminService.Get(UserEntity, AdminId);
+        }
+        [HttpGet("Count")]
+        public int Count([FromBody]AdminSearchEntity AdminSearchEntity)
+        {
+            return AdminService.Count(UserEntity, AdminSearchEntity);
+        }
+        [HttpGet("List")]
+        public List<AdminEntity> List([FromBody]AdminSearchEntity AdminSearchEntity)
+        {
+            return AdminService.List(UserEntity, AdminSearchEntity);
         }
         [HttpDelete("{AdminId}")]
         public bool Delete([FromRoute]Guid AdminId)

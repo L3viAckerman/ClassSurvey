@@ -32,7 +32,7 @@ namespace ClassSurvey.Modules.MOperation
         {
             Operation Operation = context.Operations.Where(u => u.Id == LecturerId).FirstOrDefault();
             if (Operation == null)
-                throw new BadRequestException("Operations không tồn tại");
+                throw new BadRequestException("Operations not exist!");
             return new OperationEntity(Operation);
         }
         public OperationEntity Create(UserEntity UserEntity, OperationEntity OperationEntity)

@@ -54,11 +54,11 @@ namespace ClassSurvey.Modules.MClasses.Entity
     {
         public Guid Id { get; set; }
         public string ClassCode { get; set; }
+        public string Semester { get; set; }
         public Guid LecturerId { get; set; }
         public string Subject { get; set; }
         public Guid VersionId { get; set; }
         public DateTime? OpenedDate { get; set; }
-        public DateTime? ClosedDate { get; set; }
-        public string Semester { get; set; }
+        public DateTime? ClosedDate { get; set; }       
     }
 }

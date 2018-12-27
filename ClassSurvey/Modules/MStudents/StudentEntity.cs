@@ -42,7 +42,7 @@ namespace ClassSurvey.Modules.MStudents.Entity
             }
         }
     }
-    class StudentContent //tam thua
+    class StudentContent
     {
         public string Class { get; set; }
     }

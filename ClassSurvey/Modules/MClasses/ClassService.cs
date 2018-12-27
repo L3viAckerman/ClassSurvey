@@ -38,9 +38,7 @@ namespace ClassSurvey.Modules.MClasses
                 {
                     count += 1;
                 }
-
             }
-
             return count / Class.StudentNumber;
         }
         public List<ClassEntity> List(UserEntity userEntity, ClassSearchEntity classSearchEntity)
@@ -48,10 +46,7 @@ namespace ClassSurvey.Modules.MClasses
             if (classSearchEntity == null) classSearchEntity = new ClassSearchEntity();
             IQueryable<Class> classes = context.Classes.Include(s => s.StudentClasses).ThenInclude(sc => sc.Student)
                 .Include(s => s.VersionSurvey).Include(c => c.Lecturer);
-
             classes = Apply(classes, classSearchEntity);
-            //List<Class> list = classes.ToList();
-            //classes = classSearchEntity.SkipAndTake(classes);
 
             return classes.Select(c => new ClassEntity(c, c.VersionSurvey, c.StudentClasses, c.Lecturer)).ToList();
         }
@@ -62,10 +57,7 @@ namespace ClassSurvey.Modules.MClasses
             Class Class = context.Classes.Include(c => c.Lecturer).Include(c => c.StudentClasses).ThenInclude(sc => sc.Student).Include(s => s.VersionSurvey).FirstOrDefault(c => c.Id == ClassId);
             if (Class == null) throw new NotFoundException("Class not found!");
             List<Class> classes = context.Classes.Where(c => c.Semester == Class.Semester).ToList();
-            if (//Class.OpenedDate != null && Class.ClosedDate != null && 
-                //DateTime.Now > Class.OpenedDate  && DateTime.Now > Class.ClosedDate &&
-                //string.IsNullOrEmpty(Class.M)
-                true)
+            if (true)
             {
                 Average(Class.Semester);
                 Average1(Class.Semester);

@@ -12,9 +12,6 @@ namespace ClassSurvey.Modules.MOperation
         public string Role { get; set; }
         public IQueryable<Operation> ApplyTo(IQueryable<Operation> Operations)
         {
-            //if (!string.IsNullOrEmpty(Name))
-            //    Operations = Operations.Where(u => u.Name.ToLower().Equals(Name.ToLower()));
-            //return Operations;
             return Operations;
         }
     }

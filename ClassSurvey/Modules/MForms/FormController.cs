@@ -23,21 +23,25 @@ namespace ClassSurvey.Modules.MForms
         {
             return FormService.Count(UserEntity, FormSearchEntity);
         }
+
         [HttpGet("List")]
         public List<FormEntity> List(FormSearchEntity FormSearchEntity)
         {
             return FormService.List(UserEntity, FormSearchEntity);
         }
+
         [HttpPut("{FormId}")]
         public FormEntity Update([FromBody] FormEntity FormEntity, [FromRoute]Guid FormId)
         {
             return FormService.Update(UserEntity, FormId, FormEntity);
         }
+
         [HttpGet("{FormId}")]
         public FormEntity Get([FromRoute]Guid FormId)
         {
             return FormService.Get(UserEntity, FormId);
         }
+
         [HttpDelete("{FormId}")]
         public bool Delete([FromRoute]Guid FormId)
         {

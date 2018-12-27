@@ -39,6 +39,5 @@ namespace ClassSurvey.Modules.MForms.Entity
     {
         public Guid Id { get; set; }
         public Guid StudentClassId { get; set; }
-
     }
 }

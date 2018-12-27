@@ -29,7 +29,7 @@ namespace ClassSurvey.Modules.MVersionSurveys
 
         public VersionSurveyEntity Get(UserEntity userEntity, Guid VersionSurveyId)
         {
-            VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); ///add include later
+            VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); 
             if (VersionSurvey == null) throw new NotFoundException("VersionSurvey not found!");
             return new VersionSurveyEntity(VersionSurvey);
         }
@@ -39,7 +39,7 @@ namespace ClassSurvey.Modules.MVersionSurveys
                || VersionSurveyEntity.Content == null
                || VersionSurveyEntity.Version.ToString() == null)
                 throw new BadRequestException("Field must not empty!");
-            VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); //add include later
+            VersionSurvey VersionSurvey = context.VersionSurveys.FirstOrDefault(c => c.Id == VersionSurveyId); 
             if (VersionSurvey == null) throw new NotFoundException("VersionSurvey not found!");
             VersionSurvey updateVersionSurvey = new VersionSurvey(VersionSurveyEntity);
             DateTime? createdDate = VersionSurvey.CreatedDate;

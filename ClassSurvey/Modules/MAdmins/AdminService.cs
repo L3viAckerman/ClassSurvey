@@ -30,32 +30,20 @@ namespace ClassSurvey.Modules.MAdmins
         {
             if (AdminSearchEntity == null) AdminSearchEntity = new AdminSearchEntity();
             IQueryable<Admin> Admins = context.Admins;
-            Admins = Apply(Admins, AdminSearchEntity);
-            //Admins = AdminSearchEntity.SkipAndTake(Admins);
-           
-//            List<User> Users = new List<User>();
-//            foreach (var admin in Admins)
-//            {
-//                var admin_user = context.Users.FirstOrDefault(u => u.Id == admin.Id);
-//                Users.Add(admin_user);
-//            }
-//            
-//            return Admins.Join(Users, ad => ad.Id, u => u.Id, (ad, u) => new AdminEntity(ad, u))
-//                .ToList();
+            Admins = Apply(Admins, AdminSearchEntity);    
             return Admins.Select(ad => new AdminEntity(ad)).ToList();
         }
 
         public AdminEntity Get(UserEntity userEntity, Guid AdminId)
         {
-            Admin Admin = context.Admins.FirstOrDefault(c => c.Id == AdminId); ///add include later
-            //User User = context.Users.FirstOrDefault(u => u.Id == AdminId);                                                           
+            Admin Admin = context.Admins.FirstOrDefault(c => c.Id == AdminId);                                                        
             if (Admin == null) throw new NotFoundException("Admin not found!");
             return new AdminEntity(Admin);
         }
 
         public AdminEntity Update(UserEntity userEntity, Guid AdminId, AdminEntity AdminEntity)
         {
-            Admin Admin = context.Admins.FirstOrDefault(c => c.Id == AdminId); //add include later
+            Admin Admin = context.Admins.FirstOrDefault(c => c.Id == AdminId); 
             if (Admin == null) throw new NotFoundException("Admin not found!");
             Admin updateAdmin = new Admin(AdminEntity);
             updateAdmin.CopyTo(Admin);
@@ -82,7 +70,6 @@ namespace ClassSurvey.Modules.MAdmins
             context.SaveChanges();
             return new AdminEntity(Admin);   
         }
-
 
         public bool Delete(UserEntity userEntity, Guid AdminId)
         {
