@@ -30,7 +30,7 @@ namespace ClassSurvey
             this.JWTHandler = JWTHandler;
         }
 
-        //uy quyen
+        
         public void OnActionExecuting(ActionExecutingContext FilterContext)
         {
             if (FilterContext.HttpContext.Request.Path.Value.StartsWith("/api/Users/Login"))
@@ -79,7 +79,7 @@ namespace ClassSurvey
 
         public void OnActionExecuted(ActionExecutedContext Context)
         {
-            //throw new NotImplementedException();
+            
         }
     }
 
@@ -240,7 +240,7 @@ namespace ClassSurvey
                 {"unique_name", UserEntity.Id},
                 {"iss", issuer},
                 {"iat", now},
-                //{"nbf", now},
+                
                 {"exp", exp}
             };
             var jwt = new JwtSecurityToken(_jwtHeader, payload);

@@ -145,7 +145,7 @@ namespace ClassSurvey.Modules.MClasses
 
                 }
 
-                //context.SaveChanges();
+                context.SaveChanges();
             }
 
             context.Classes.Remove(CurrentClass);
@@ -165,10 +165,8 @@ namespace ClassSurvey.Modules.MClasses
                         ConvertToIEnumrable<StudentExcelModel>(data).ToList();
                     string lecturerCode = GetPropValueFromExcel(data, "Mã cán bộ:").Trim();
                     if (lecturerCode == "") throw new BadRequestException("Cannot get lectureCode!");
-                    //newClass.LectureId = new Guid(Id);
                     var lecturer = context.Lecturers.FirstOrDefault(l => l.LecturerCode.Trim() == lecturerCode);
                     newClass.LecturerId = lecturer.Id;
-                    //newClass.Lecture = lecturer;
                     newClass.Subject = GetPropValueFromExcel(data, "Môn học:");
                     newClass.ClassCode = GetPropValueFromExcel(data, "Lớp môn học:");
                     newClass.StudentNumber = studentModelEntities.Count(sme => sme.Code != null);
@@ -355,7 +353,6 @@ namespace ClassSurvey.Modules.MClasses
                             }
 
                         }
-                        //Console.WriteLine("m1: " + values.Count());
                         double sum = 0;
                         if (values.Count == 0) return;
                         values.ForEach(v => sum += v);
@@ -402,7 +399,6 @@ namespace ClassSurvey.Modules.MClasses
                         double variance = 0;
                         values.ForEach(v => variance += Math.Pow((v - M1), 2));
                         double Std1 = Math.Sqrt(variance);
-                        //Console.WriteLine("std1:" + values.Count() + variance + " " + M1);
                         Std1s.Add(key, Std1);
                     }
                     Class.Std1 = JsonConvert.SerializeObject(Std1s);
@@ -441,7 +437,6 @@ namespace ClassSurvey.Modules.MClasses
                         double sum = 0;
                         values.ForEach(v => sum += v);
                         double M2 = sum / values.Count();
-                        //Console.WriteLine("m2: "+values.Count() + M2 + " " + sum);
                         M2s.Add(key, M2);
                     }
                     Class.M2 = JsonConvert.SerializeObject(M2s);
