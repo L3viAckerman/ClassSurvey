@@ -31,6 +31,10 @@ namespace ClassSurvey.Models
                 this.VersionSurvey = new VersionSurvey(classEntity.VersionSurveyEntity);
             }
         }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         public override bool Equals(Base other)
         {
             if (other == null) return false;
